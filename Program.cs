@@ -1,5 +1,4 @@
 using System.Text;
-using Consul;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +18,9 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
 builder.Host.UseSerilog();
 
 // Configure connection string for the database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("PostgresConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -53,22 +52,6 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddHttpClient<UserService>();
 builder.Services.AddControllers();
-
-var consulClient = new ConsulClient(config =>
-{
-    config.Address = new Uri("http://localhost:8500");
-});
-
-var registration = new AgentServiceRegistration
-{
-    ID = "user-service-1", 
-    Name = "user-service",
-    Address = "localhost",
-    Port = 5277,
-    Tags= ["api", "users"]
-};
-
-await consulClient.Agent.ServiceRegister(registration);
 
 var app = builder.Build();
 
