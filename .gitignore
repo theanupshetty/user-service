@@ -1,0 +1,85 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.json
+*.db
+
+# Entity Framework
+Migrations/
+*.bak
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# MongoDB
+data/
+dump/
+*.json
+
+# Azure deployment settings
+*.Publish.xml
+
+# Other files
+*.pdb
+*.mdb
+*.dbmdl
+*.dbproj
+*.dbproj.user
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ReSharper
+_ReSharper*/
+*.DotSettings
+*.DotSettings.user
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio 2019 and 2022
+.vs/
+*.sln.docstates
+
+# Ignore files created by JetBrains Rider
+.idea/
+*.sln.iml
+
+#log files
+.logs/
+*.txt
